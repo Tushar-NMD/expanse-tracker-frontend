@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+/* Custom font classes */
+.myfont {
+  font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.font-myfont {
+  font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+}
