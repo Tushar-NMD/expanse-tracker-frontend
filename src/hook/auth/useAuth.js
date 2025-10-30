@@ -18,7 +18,18 @@ const useAuth = () => {
                 body: JSON.stringify(userData),
             });
 
-            const data = await response.json();
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
+
+            const text = await response.text();
+            let data;
+            
+            try {
+                data = JSON.parse(text);
+            } catch {
+                throw new Error('Server returned invalid response');
+            }
 
             if (!data.success) {
                 throw new Error(data.message || 'Registration failed');
@@ -46,7 +57,18 @@ const useAuth = () => {
                 body: JSON.stringify(userData),
             });
 
-            const data = await response.json();
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
+
+            const text = await response.text();
+            let data;
+            
+            try {
+                data = JSON.parse(text);
+            } catch {
+                throw new Error('Server returned invalid response');
+            }
 
             if (!data.success) {
                 throw new Error(data.message || 'Login failed');
